@@ -10,7 +10,7 @@ const Asena = require('../events');
 const {MessageType, Mimetype } = require('@adiwajshing/baileys');
 const FilterDb = require('./sql/filters');
 const Config = require('../config')
-const jid = Config.DISBGM !== false ? Config.DISBGM.split(',') : [];
+const jid = Config.DISBGM !== true ? Config.DISBGM.split(',') : [];
 const Language = require('../language');
 const Lang = Language.getString('filters');
 
@@ -118,13 +118,13 @@ Asena.addCommand({on: 'text', fromMe: false}, (async (message, match) => {
         let banned = jid.find( Jid => Jid === message.jid);
         if(banned !== undefined) return
         if (!!message.mention && message.mention[0] == '919497766159@s.whatsapp.net') {
-await message.client.sendMessage(message.jid, fs.readFileSync('./DBS-BOT/uploads/mention.mp3'), MessageType.audio, { mimetype: Mimetype.mp4Audio, quoted : message.data, ptt: true})
+await message.client.sendMessage(message.jid, fs.readFileSync('./DBS-BOT/tree/master/uploads/mention.mp3'), MessageType.audio, { mimetype: Mimetype.mp4Audio, quoted : message.data, ptt: true})
         }
 const array = ['Alive','Ara','Bgm','Boom','Boss','Achu','Adam','Azaru','Dance','Danger boys','Fan','good','Haa','Hai','happy','Help','Poda','Ringtone','umma','Voice','Wait','Xxx','help','Bot','Breakup','Bye','Cash','Chatho','Chellakutti','Chitti','DBS','Da','Don','English','Enth','Fak','Football','freefire','Friend','Fuck','Good night','Happy','Hello','Hi','Hlo','I love','Ila','Kanjav','Kille','King','Like','Love','Machan','Mass','Mone','Monster','Moodesh','Music','Name','Nee poda','Njan','No girls','Noob','Oh','Ok','Old','Perfect','Phone','Polikum','Power','Powli','Pubg','Sed','Set','Shop','Song','Sorry','Sub','Thamasha','Thanks','Tnx','Umma','Uraghiyo','Uyir','Welcome','Why','You','alive','bad','bot','good night','hi','ila','indo','menu','music']
 array.map( async (a) => {
 let pattern = new RegExp(`\\b${a}\\b`, 'g');
 if(pattern.test(message.message)){
-       await message.client.sendMessage(message.jid, fs.readFileSync('./DBS-BOT/uploads/' + a + '.mp3'), MessageType.audio, { mimetype: Mimetype.mp4Audio, quoted: message.data, ptt: true})
+       await message.client.sendMessage(message.jid, fs.readFileSync('./DBS-BOT/tree/master/uploads/' + a + '.mp3'), MessageType.audio, { mimetype: Mimetype.mp4Audio, quoted: message.data, ptt: true})
 }
 });
     }
